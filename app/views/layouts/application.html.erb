@@ -2,6 +2,12 @@
 <html>
   <head>
     <title>PoteshareApp</title>
+    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/home.css">
+   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +16,53 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header-left-nav">
+          <%= link_to image_tag("logo.png", alt: "サイトのロゴ画像"), "/" %>
+            <div class="header-search d-lg-inline-block d-none">
+              <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
+              <i class="fas fa-search">
+              </i>
+            </div>
+          <input type="submit" name="commit" class="header-search d-none" value data-disable-with>
+        </form>
+      </div>
+      <!-- ログインしてるかどうかによってどっちかを表示 -->
+      <!-- ログインしてない場合 -->
+      <div class="header-right-nav">
+        <div class="nav-item">
+            <%= link_to("ログイン", login_path, {class: "btn btn-primary my-2 mx-3"}) %>
+            <%= link_to("登録する", signup_path, {class: "btn btn-secondary"}) %>
+        </div>
+      </div>
+      <!-- ログインしてる場合 -->
+      <div class="header-right-nav">
+        <div class="nav-item d-sm-inline-block d-none">
+          (username)
+        </div>
+        <!-- ユーザアイコンを押下したらメニューが出るようにする -->
+        <div class="nav-item">
+          <img class="mx-3 p-1 host-icon nav-trigger" alt="メニュー" src="/assets/room01.jpg">
+          <ul class="header-nav-menu" style="display: block;">
+            <li><a href="/rooms/new">ルーム登録</a></li>
+            <li><a href="/reservations">予約済みルーム一覧</a></li>
+            <li><a href="/rooms/posts">登録済みルーム一覧</a></li>
+            <li><a href="/users/account">設定</a></li>
+            <li><a rel="nofollow" data-method="delete" href="/logout">ログアウト</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="clearfix"></div>
+    <div class="notifications">
+        
+    </div>
+    <div class="main-content">
+      <%= yield %>
+    </div>
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </body>
 </html>
