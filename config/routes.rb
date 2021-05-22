@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "reservations/new" => "reservations#new"
   post "reservations/create" => "reservations#create"
   get "reservations/:id" => "reservations#confirm"
-
+  
   get "rooms/new" => "rooms#new"
   post "rooms/create" => "rooms#create"
   get "rooms/search" => "rooms#search"

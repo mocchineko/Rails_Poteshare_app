@@ -12,9 +12,8 @@
         </div>
         <div class="col-lg-10 room-view">
             <div class="room-view-box">
-                <form class="new_room" id="new_room" enctype="multipart/form-data" action="/rooms"
-                    accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token"
-                        value="zKnn3q9lsj33Y03WEUIn6Oyxfd/taaxucBkryrV8Whu5HgJEw/y89BLUT78qqNybpOg8IABkoCrXYUs+ZPD63w==">
+                <%= form_tag("/rooms/create", method: :post, class: "new_room", id: "new_room", multipart: true) do %>
+                    <input type="hidden" name="authenticity_token" value="zKnn3q9lsj33Y03WEUIn6Oyxfd/taaxucBkryrV8Whu5HgJEw/y89BLUT78qqNybpOg8IABkoCrXYUs+ZPD63w==">
                     <div class="update-content">
                         <div class="row">
                             <h5>ルーム情報登録</h5>
@@ -24,34 +23,34 @@
                         <div class="row">
                             <label class="col-md-3 required-a" for="name">ルーム名</label>
                             <input class="form-control mb-4 col-md-9" placeholder="ルーム名を入力" type="text"
-                                name="room[name]" id="room_name">
+                                name="name" id="room_name">
                         </div>
                     </div>
                     <div class="update-content">
                         <div class="row">
                             <label class="col-md-3 required-a" for="content">ルーム紹介</label>
                             <textarea rows="5" class="form-control mb-4 col-md-9" placeholder="ルーム説明を入力"
-                                name="room[content]" id="room_content"></textarea>
+                                name="description" id="room_content"></textarea>
                         </div>
                     </div>
                     <div class="update-content">
                         <div class="row">
                             <label class="col-md-3 required-a" for="price">料金</label>
                             <input class="form-control mb-4 col-md-9" placeholder="一日あたりの料金を入力" type="number"
-                                name="room[price]" id="room_price">
+                                name="price" id="room_price">
                         </div>
                     </div>
                     <div class="update-content">
                         <div class="row">
                             <label class="col-md-3 required-a" for="address">住所</label>
                             <input class="form-control mb-4 col-md-9" placeholder="住所を入力" type="text"
-                                name="room[address]" id="room_address">
+                                name="address" id="room_address">
                         </div>
                     </div>
                     <div class="update-content">
                         <div class="row">
                             <label class="col-md-3 required-a" for="image">ルーム画像</label>
-                            <input class="mb-4 col-md-9" placeholder="ルーム画像をアップロード" type="file" name="room[image]"
+                            <input class="mb-4 col-md-9" placeholder="ルーム画像をアップロード" type="file" name="room_name"
                                 id="room_image">
                         </div>
                     </div>
@@ -61,7 +60,7 @@
                                 data-disable-with="登録">
                         </div>
                     </div>
-                </form>
+                <% end %>
             </div>
         </div>
     </div>

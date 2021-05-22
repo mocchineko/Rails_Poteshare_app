@@ -13,19 +13,10 @@
             </tr>
         </thead>
         <tbody>
-            <% @rooms.each do |room| %>
                 <div class="rooms-index-item">
                     <tr>
-                        <td><a href="/rooms/:id"><img onerror="this.onerror=null;this.src='/assets/room01.jpg';" class="reservations-image" src="/assets/#{room.room_name}"></a></td>
-                        <td class="rooms-name"><a href="/rooms/:id"><%= room.name %></a></td>
-                        <td class="rooms-introduce"><%= room.descripition</td>
-                        <td class="price-icon"><%= @total_price %></td>
-                        <td><%= room.start %></td>
-                        <td><%= room.end %></td>
-                        <td><%= room.updated_at.strftime("%Y年%m月%d日%H時%M分")</td>
                     </tr>
                 </div>
-            <% end %>
         </tbody>
     </table>
 </div>

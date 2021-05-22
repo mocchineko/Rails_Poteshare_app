@@ -19,6 +19,12 @@
     <header class="header">
       <div class="header-left-nav">
           <%= link_to image_tag("logo.png", alt: "サイトのロゴ画像"), "/" %>
+          <form action="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search" accept-charset="UTF-8" method="get">
+            <div class="header-search d-lg-inline-block d-none">
+              <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
+              <i class="fas fa-map-marker-alt">
+              </i>
+            </div>
             <div class="header-search d-lg-inline-block d-none">
               <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
               <i class="fas fa-search">

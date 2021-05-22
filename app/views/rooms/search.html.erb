@@ -1,111 +1,21 @@
 <div class="container-fiuld room">
     <h4 class="pb-4">検索結果：59件</h4>
     <div class="row">
-
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
+        <% @rooms.each do |room| %>
+            <div class="col-sm-6 col-lg-4 col-xl-3">
+                <div class="room-frame-inner">
                     <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
+                        <%= link_to("/rooms/#{room.id}") do %>
+                            <img src="<%= room.room_name %>" class="room-image" alt="部屋画像" onerror="this.onerror=null;this.src='/assets/room01.jpg';")
+                        <% end %>
                     </div>
                     <div class="room-profile">
-                        <p class="room-profile-name">っっg</p>
-                        <p class="room-profile-city">東京</p>
-                        <p class="room-profile-price price-icon">10</p>
+                        <p class="room-profile-name"><%= room.name %></p>
+                        <p class="room-profile-city"><%= room.address %></p>
+                        <p class="room-profile-price price-icon"><%= room.price %></p>
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
-                    <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
-                    </div>
-                    <div class="room-profile">
-                        <p class="room-profile-name">l</p>
-                        <p class="room-profile-city">東京</p>
-                        <p class="room-profile-price price-icon">1000</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
-                    <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
-                    </div>
-                    <div class="room-profile">
-                        <p class="room-profile-name">New Room</p>
-                        <p class="room-profile-city">東京</p>
-                        <p class="room-profile-price price-icon">-3</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
-                    <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
-                    </div>
-                    <div class="room-profile">
-                        <p class="room-profile-name">ほげほげ</p>
-                        <p class="room-profile-city">東京都多摩市</p>
-                        <p class="room-profile-price price-icon">500</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
-                    <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
-                    </div>
-                    <div class="room-profile">
-                        <p class="room-profile-name">The Ritz Carlton Tokyo</p>
-                        <p class="room-profile-city">東京都 港区</p>
-                        <p class="room-profile-price price-icon">159800</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
-                    <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
-                    </div>
-                    <div class="room-profile">
-                        <p class="room-profile-name">東京墨田区</p>
-                        <p class="room-profile-city">東京都墨田区</p>
-                        <p class="room-profile-price price-icon">20000000</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 col-xl-3">
-            <div class="room-frame-inner">
-                <a href="/rooms/1">
-                    <div class="room-image-out">
-                        <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-image"
-                            src="/assets/room01.jpg">
-                    </div>
-                    <div class="room-profile">
-                        <p class="room-profile-name">カオサンワールド両国ホステル</p>
-                        <p class="room-profile-city">東京都墨田区両国4－30－5</p>
-                        <p class="room-profile-price price-icon">600</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+        <% end %>
     </div>
 </div>

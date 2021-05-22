@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            name:
+              blank: "空になっています。入力してください。"
+            desicripition:
+              blank: "空になっています。入力してください。"
+            price:
+              blank: "空になっています。入力してください。"
+            address:
+              blank: "空になっています。入力してください。"
+            room_name:
+              blank: "画像を選択してください。"
