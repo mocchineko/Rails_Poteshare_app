@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user, {only: [:new, :create, :posts]}
+  
   def index
     @rooms =Room.all
   end
@@ -9,13 +11,13 @@ class RoomsController < ApplicationController
 
   def create
     
-    if params[:room_name].present?
-      uploaded_file = params[:room_name]
+    if params[:thumbnail].present?
+      uploaded_file = params[:thumbnail]
       upload_path = File.join("uploads_room_images", uploaded_file.original_filename)
       File.open(Rails.root.join("public", upload_path), 'w+b') do |fp|
         fp.write  uploaded_file.read
       end
-      room_name = File.join("/", upload_path)
+      thumbnail = File.join("/", upload_path)
     end
 
     @room = Room.new(
@@ -23,7 +25,7 @@ class RoomsController < ApplicationController
       description: params[:description],
       price: params[:price],
       address: params[:address],
-      room_name: room_name
+      thumbnail: thumbnailquit
       )
       if @room.save
         flash[:notice] = "ルームを登録しました"
@@ -38,14 +40,24 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.all.order(created_at: :desc)
-  end
+    if params[:area].present?
+      @rooms = Room.where('address LIKE ?', "%#{params[:area]}}%")
+    elsif
+      @rooms = Room.where(['address LIKE ? OR name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      @rooms = Room.none
+    end
 
-  def reserve
+    @room_count = @rooms.count
   end
+    # そもそもの動き
+    # エリアで検索した後、さらにその結果をキーワードで絞り込む流れになるのでは？
+    # 現在はエリアとキーワードそれぞれで検索して、それぞれの結果を表示している
 
-  def posts
-    @rooms = Room.all.order(created_at: :desc)
-  end
+    # 検索結果の件数を表示したいので、allは間違い。これだと全権出てしまう
+
+    def posts
+      @rooms = Room.all.order(created_at: :desc)
+    end
 
 end

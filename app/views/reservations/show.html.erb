@@ -5,25 +5,25 @@
                 <div class="update-content">
                     <div class="row">
                         <label class="col-md-3" for="room">予約した部屋</label>
-                        <div class="col-md-9"><a href="/rooms/310">a</a></div>
+                        <div class="col-md-9"><a href="/rooms/310"><%= @reservation.room.name %></a></div>
                     </div>
                 </div>
                 <div class="update-content">
                     <div class="row">
                         <label class="col-md-3" for="start_date">開始日</label>
-                        <div class="col-md-9">2021年05月13日</div>
+                        <div class="col-md-9"><%= @reservation.start %> formatかける</div>
                     </div>
                 </div>
                 <div class="update-content">
                     <div class="row">
                         <label class="col-md-3" for="end_date">終了日</label>
-                        <div class="col-md-9">2021年05月28日</div>
+                        <div class="col-md-9"><%= @reservation.end %> formatかける</div>
                     </div>
                 </div>
                 <div class="update-content">
                     <div class="row">
                         <label class="col-md-3" for="end_date">価格</label>
-                        <div class="col-md-9">15円</div>
+                        <div class="col-md-9"><%= @reservation.total_amount %>円</div>
                     </div>
                 </div>
             </div>

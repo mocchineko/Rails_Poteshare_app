@@ -5,11 +5,11 @@
                 <div class="form-fream">
                     <div class="form-area">
                         <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
-                        <form action="/rooms/search" method="get">
-                            <label for="___">エリア</label>
-                            <input type="text" name="area" id="area" class="form-control mb-4" value placeholder="東京">
-                            <input type="submit" name="commit" value="探す" class="form-control btn-primary mb-4" data-disable-with="探す">
-                        </form>
+                        <%= form_with url: rooms_search_path, method: :get, local: true do |f| %>
+                            <%= f.label "エリア" %>
+                            <%= f.text_field :search, placeholder:"東京", class:"form-control mb-4", name:"area", id:"area" %>
+                            <%= f.submit "探す", name:"commit", class:"form-control btn-primary mb-4" %>
+                        <% end %>
                     </div>
                 </div>
             </div>

@@ -8,28 +8,27 @@
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text"
-                        name="user[name]" id="user_name">
+                        name="name" id="user_name">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="email" class="form-control col-10 px-2" placeholder="メールアドレス" type="email"
-                        value="" name="user[email]" id="user_email">
+                    <input autocomplete="email" class="form-control col-10 px-2" placeholder="メールアドレス" type="email" name="email" id="user_email">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード"
-                        type="password" name="user[password]" id="user_password">
+                        type="password" name="password" id="user_password" value="<%= @user.password %>">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード確認"
-                        type="password" name="user[password_confirmation]" id="user_password_confirmation">
+                        type="password" name="password_confirmation" id="user_password_confirmation">
                 </div>
                 <div class="actions">
                     <input type="submit" name="commit" value="新しいアカウントを作成" class="form-control btn-primary my-4 "
                         data-disable-with="新しいアカウントを作成">
                 </div>
-            </form> <a href="/users/sign_in">すでにアカウントをお持ちの方はログイン</a><br>
+            </form> <%= link_to "すでにアカウントをお持ちの方はログイン", login_form_path %><br>
         </div>
     </div>
 </div>

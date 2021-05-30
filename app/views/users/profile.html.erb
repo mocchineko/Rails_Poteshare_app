@@ -27,8 +27,7 @@
                         <div class="row">
                             <div class="col-md-6 offset-md-3">
                                 <div class="icon-box">
-                                    <img alt="アイコン画像" class="icon-image host-icon"
-                                        src="/uploads/user/image/412/room01.jpg">
+                                    <img alt="アイコン画像" class="icon-image host-icon" src="<%= @user.icon %>">
                                 </div>
                             </div>
                         </div>
@@ -43,7 +42,7 @@
                     <div class="update-content">
                         <div class="row">
                             <label class="col-md-3 required-a" for="name">名前</label>
-                            <input class="form-control mb-4 col-md-9" placeholder="名前を入力" type="text" value="a"
+                            <input class="form-control mb-4 col-md-9" placeholder="名前を入力" type="text" value="<%= @user.name %>"
                                 name="user[name]" id="user_name">
                         </div>
                     </div>
@@ -51,7 +50,7 @@
                         <div class="row">
                             <label class="col-md-3 required-a" for="introduction">自己紹介</label>
                             <textarea rows="5" class="form-control mb-4 col-md-9" placeholder="自己紹介を入力"
-                                name="user[introduction]" id="user_introduction">a</textarea>
+                                name="user[introduction]" id="user_introduction"><%= @user.introduce %></textarea>
                         </div>
                     </div>
                     <div class="update-content">

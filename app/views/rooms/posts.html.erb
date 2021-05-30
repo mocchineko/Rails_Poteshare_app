@@ -15,14 +15,14 @@
         <tr>
           <td>
             <%= link_to("/rooms/#{room.id}") do %>
-              <img src="<%= room.room_name %>" class="room-posts-image" alt="部屋画像" onerror="this.onerror=null;this.src='/assets/room01.jpg';")
+              <img src="<%= room.thumbnail %>" class="room-posts-image" alt="部屋画像" onerror="this.onerror=null;this.src='/assets/room01.jpg';")
             <% end %>
           </td>
           <td class="posts-name">
             <%= link_to("#{room.name}", "/rooms/#{room.id}") %>
           </td>
           <td class="posts-content">
-            <%= room.tion %>
+            <%= room.description %>
           </td>
           <td class="price-icon">
             <%= room.price %>

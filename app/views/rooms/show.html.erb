@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-8">
             <img onerror="this.onerror=null;this.src='/assets/room01.jpg';" alt="部屋画像" class="room-show-image"
-                src="<%= @room.room_name %>">
+                src="<%= @room.thumbnail %>">
             <div class="room-show-detile">
                 <div class="room-show-detile-icon">
                     <a href="/">
@@ -22,11 +22,11 @@
                 <div class="room-show-date-select">
                     <form action="/reservations/new" accept-charset="UTF-8" method="get">
                         <label for="start_date">開始日</label>
-                        <input type="date" name="start_date" id="start_date" value="" class="form-control mb-4">
+                        <input class="form-control mb-4" placeholder="年/月/日" type="date" name="start_date" id="start_date">
                         <label for="end_date">終了日</label>
-                        <input type="date" name="end_date" id="end_date" value="" class="form-control mb-4">
-                        <label for="person_num">人数</label>
-                        <input type="number" name="person_num" id="person_num" value="" class="form-control mb-4">
+                        <input class="form-control mb-4" placeholder="年/月/日" type="date" name="end_date" id="end_date">
+                        <label for="person_count">人数</label>
+                        <input class="form-control mb-4" type="number" name="person_count" id="person_count">
                         <input type="hidden" name="room_id" id="room_id" value="16">
                         <input type="submit" name="commit" value="予約する" class="btn btn-primary form-control"
                             data-disable-with="予約する">

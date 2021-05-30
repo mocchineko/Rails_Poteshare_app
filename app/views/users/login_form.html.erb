@@ -2,24 +2,22 @@
     <div class="device_frame">
         <p class="my-4">ログイン</p>
         <div class="device_inner">
-            <form class="new_user" id="new_user" action="/login" accept-charset="UTF-8" method="post"><input
-                    type="hidden" name="authenticity_token"
-                    value="SkstBhSE4U5fRtiVlo38A2Gsf3fHotW9w45EcqugOxZ6vDjNwkz+YROLmncUXEpgX1wEa1RYAuEJJaD+6pDXLQ==">
+            <%= form_tag("/login", method: :post, class: "new_user", id: "new_user") do %>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="email" class="form-control col-10 px-2" placeholder="メールアドレス" type="email"
-                        value="" name="user[email]" id="user_email">
+                        value="<%= @email %>" name="user[email]" id="user_email">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="current-password" class="form-control col-10 px-2" placeholder="パスワード"
-                        type="password" name="user[password]" id="user_password">
+                        type="password" value="<%= @password %>" name="user[password]" id="user_password">
                 </div>
                 <div class="actions">
                     <input type="submit" name="commit" value="ログイン" class="form-control btn-primary my-4 "
                         data-disable-with="ログイン">
                 </div>
-            </form>
+            <% end %>
             <a href="/users/sign_up">新しいアカウントを作成</a><br>
         </div>
     </div>

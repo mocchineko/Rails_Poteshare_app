@@ -3,7 +3,6 @@
   <head>
     <title>PoteshareApp</title>
     <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/home.css">
    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
@@ -19,14 +18,14 @@
     <header class="header">
       <div class="header-left-nav">
           <%= link_to image_tag("logo.png", alt: "サイトのロゴ画像"), "/" %>
-          <form action="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search" accept-charset="UTF-8" method="get">
+          <form action="/rooms/search" accept-charset="UTF-8" method="get">
             <div class="header-search d-lg-inline-block d-none">
               <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
               <i class="fas fa-map-marker-alt">
               </i>
             </div>
             <div class="header-search d-lg-inline-block d-none">
-              <input type="text" name="keyword" id="keyword" class="form-control" placeholder="キーワード">
+              <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="キーワード">
               <i class="fas fa-search">
               </i>
             </div>
@@ -35,29 +34,32 @@
       </div>
       <!-- ログインしてるかどうかによってどっちかを表示 -->
       <!-- ログインしてない場合 -->
-      <div class="header-right-nav">
-        <div class="nav-item">
-            <%= link_to("ログイン", login_path, {class: "btn btn-primary my-2 mx-3"}) %>
-            <%= link_to("登録する", signup_path, {class: "btn btn-secondary"}) %>
+      <% if @current_user %>
+        <div class="header-right-nav">
+          <div class="nav-item d-sm-inline-block d-none">
+            <%= @current_user.name %>
+          </div>
+          <!-- ユーザアイコンを押下したらメニューが出るようにする -->
+          <div class="nav-item">
+            <img class="mx-3 p-1 host-icon nav-trigger" alt="メニュー" src="<%= @current_user.icon %>" onerror="this.onerror=null;this.src='/assets/default_icon.jpg';">
+            <ul class="header-nav-menu" style="display: block;">
+              <li><a href="/rooms/new">ルーム登録</a></li>
+              <li><a href="/reservations">予約済みルーム一覧</a></li>
+              <li><a href="/rooms/posts">登録済みルーム一覧</a></li>
+              <li><a href="/users/account">設定</a></li>
+              <li><a rel="nofollow" data-method="delete" href="/logout">ログアウト</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <!-- ログインしてる場合 -->
-      <div class="header-right-nav">
-        <div class="nav-item d-sm-inline-block d-none">
-          (username)
+        <!-- ログインしてる場合 -->
+      <% else %>
+        <div class="header-right-nav">
+          <div class="nav-item">
+              <%= link_to("ログイン", login_path, {class: "btn btn-primary my-2 mx-3"}) %>
+              <%= link_to("登録する", signup_path, {class: "btn btn-secondary"}) %>
+          </div>
         </div>
-        <!-- ユーザアイコンを押下したらメニューが出るようにする -->
-        <div class="nav-item">
-          <img class="mx-3 p-1 host-icon nav-trigger" alt="メニュー" src="/assets/room01.jpg">
-          <ul class="header-nav-menu" style="display: block;">
-            <li><a href="/rooms/new">ルーム登録</a></li>
-            <li><a href="/reservations">予約済みルーム一覧</a></li>
-            <li><a href="/rooms/posts">登録済みルーム一覧</a></li>
-            <li><a href="/users/account">設定</a></li>
-            <li><a rel="nofollow" data-method="delete" href="/logout">ログアウト</a></li>
-          </ul>
-        </div>
-      </div>
+      <% end %>
     </header>
     <div class="clearfix"></div>
     <div class="notifications">

@@ -3,5 +3,6 @@ class Room < ApplicationRecord
     validates :description, {presence: true}
     validates :price, {presence: true}
     validates :address, {presence: true}
-    validates :room_name, {presence: true}
+    validates :thumbnail, {presence: true}
+
 end
