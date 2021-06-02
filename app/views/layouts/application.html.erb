@@ -2,10 +2,12 @@
 <html>
   <head>
     <title>PoteshareApp</title>
-    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
-   
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,7 +15,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header class="header">
       <div class="header-left-nav">
@@ -42,7 +43,7 @@
           <!-- ユーザアイコンを押下したらメニューが出るようにする -->
           <div class="nav-item">
             <img class="mx-3 p-1 host-icon nav-trigger" alt="メニュー" src="<%= @current_user.icon %>" onerror="this.onerror=null;this.src='/assets/default_icon.jpg';">
-            <ul class="header-nav-menu" style="display: block;">
+            <ul class="header-nav-menu">
               <li><a href="/rooms/new">ルーム登録</a></li>
               <li><a href="/reservations">予約済みルーム一覧</a></li>
               <li><a href="/rooms/posts">登録済みルーム一覧</a></li>
@@ -62,8 +63,7 @@
       <% end %>
     </header>
     <div class="clearfix"></div>
-    <div class="notifications">
-        
+    <div class="notifications">    
     </div>
     <div class="main-content">
       <%= yield %>
@@ -71,6 +71,5 @@
     <footer class="footer">
       <p>© 2020 POTEPAN.INC.</p>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   </body>
 </html>

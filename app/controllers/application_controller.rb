@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_current_user
 
-    before_action :forbid_login_user, {only: [:new, :create, :new, :login, :login_form]}
-
     protect_from_forgery
 
     def set_current_user

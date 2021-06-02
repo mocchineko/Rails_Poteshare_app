@@ -6,4 +6,5 @@ class User < ApplicationRecord
     validates :name, {presence: true}
     validates :icon, {presence: true}
     validates :introduce, {presence: true}
+    validates :password, {presence: true, length: {minimum: 6}}
 end

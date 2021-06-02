@@ -2,9 +2,14 @@
     <div class="device_frame">
         <p class="my-4">新しいアカウントを作成</p>
         <div class="device_inner">
-            <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input
-                    type="hidden" name="authenticity_token"
-                    value="X3lynWGeelri1KKcjvRx7b+/jSNukGm+PamydoQ01pOfLGKqmYijqPbkgU9nTQrufJrLO6PdxqntIFMXYO3MeQ==">
+            <%= form_tag("/users/create", method: :post, class: "new_user") do %>
+                <input type="hidden" name="authenticity_token">
+                <div class="error_explanation">
+                    <h2>
+                        <%= render 'layouts/error_messages', model: f.object %>
+                    </h2>
+                </div>
+                <input  class="form-control col-10 px-2" placeholder="メールアドレス" type="email" value="<%= @email %>" name="user[email]" id="user_email">
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text"
@@ -28,7 +33,8 @@
                     <input type="submit" name="commit" value="新しいアカウントを作成" class="form-control btn-primary my-4 "
                         data-disable-with="新しいアカウントを作成">
                 </div>
-            </form> <%= link_to "すでにアカウントをお持ちの方はログイン", login_form_path %><br>
+            <% end %>
+            <%= link_to("すでにアカウントをお持ちの方はログイン", "/login") %><br>
         </div>
     </div>
 </div>

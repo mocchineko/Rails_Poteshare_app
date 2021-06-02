@@ -19,26 +19,26 @@
         <div class="panel-area m-5">
             <h1 class="section-title">おすすめのエリア</h1>
             <div class="row">
-                    <div class="panel-item col-lg-3 col-6">
-                        <span>東京</span>
-                        <%= link_to image_tag("img_tokyo.jpg", {class: "panel-image"}), rooms_search_path %>
-                        <div class="shadow"></div>
-                    </div>
-                    <div class="panel-item col-lg-3 col-6">
-                        <span>大阪</span>
-                        <%= link_to image_tag("img_osaka.jpg", {class: "panel-image"}), rooms_search_path %>
-                        <div class="shadow"></div>
-                    </div>
-                    <div class="panel-item col-lg-3 col-6">
-                        <span>京都</span>
-                        <%= link_to image_tag("img_kyoto.jpg", {class: "panel-image"}), rooms_search_path %>
-                        <div class="shadow"></div>
-                    </div>
-                    <div class="panel-item col-lg-3 col-6">
-                        <span>札幌</span>
-                        <%= link_to image_tag("img_sapporo.jpg", {class: "panel-image"}), rooms_search_path %>
-                        <div class="shadow"></div>
-                    </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>東京</span>
+                    <%= link_to image_tag("img_tokyo.jpg", {class: "panel-image"}), "/rooms/search?area=東京" %>
+                    <div class="shadow"></div>
+                </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>大阪</span>
+                    <%= link_to image_tag("img_osaka.jpg", {class: "panel-image"}), "/rooms/search?area=京都" %>
+                    <div class="shadow"></div>
+                </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>京都</span>
+                    <%= link_to image_tag("img_kyoto.jpg", {class: "panel-image"}), "/rooms/search?area=沖縄" %>
+                    <div class="shadow"></div>
+                </div>
+                <div class="panel-item col-lg-3 col-6">
+                    <span>札幌</span>
+                    <%= link_to image_tag("img_sapporo.jpg", {class: "panel-image"}), "/rooms/search?area=札幌" %>
+                    <div class="shadow"></div>
+                </div>
             </div>
         </div>
     </div>
