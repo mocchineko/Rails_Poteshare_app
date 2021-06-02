@@ -4,12 +4,8 @@
         <div class="device_inner">
             <%= form_tag("/users/create", method: :post, class: "new_user") do %>
                 <input type="hidden" name="authenticity_token">
-                <div class="error_explanation">
-                    <h2>
-                        <%= render 'layouts/error_messages', model: f.object %>
-                    </h2>
-                </div>
-                <input  class="form-control col-10 px-2" placeholder="メールアドレス" type="email" value="<%= @email %>" name="user[email]" id="user_email">
+                <div class="field form-row">
+                    <input  class="form-control col-10 px-2" placeholder="メールアドレス" type="email" value="<%= @email %>" name="user[email]" id="user_email">
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
                     <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text"

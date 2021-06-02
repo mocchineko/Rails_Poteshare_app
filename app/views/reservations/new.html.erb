@@ -5,9 +5,8 @@
                 <h4 class="reservations-new-check-content">予約内容確認</h4>
                 <h5 class="price-icon"><%= @room.price %> / 日</h5>
                 <div class="reservations-new-date-select">
-                    <form class="new_reservation" id="new_reservation" action="/reservations" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="bW+hF41n95i3LKi7z60aW7z059c//YJNYZqf9/iwnQND2yBxpJEzyfUCsiMScWAuhnSi9R3QAD7Ubyqqx1+uBQ==">
-                        <input type="hidden" value="310" name="reservation[room_id]" id="reservation_room_id">
-                        <input type="hidden" value="412" name="reservation[user_id]" id="reservation_user_id">
+                    <form class="new_reservation" id="new_reservation" action="/reservations/create" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="bW+hF41n95i3LKi7z60aW7z059c//YJNYZqf9/iwnQND2yBxpJEzyfUCsiMScWAuhnSi9R3QAD7Ubyqqx1+uBQ==">
+                        <input type="hidden" value="<%= @room.id %>" name="reservation[room_id]" id="reservation_room_id">
                         <label for="start_date">開始日</label>
                         <input class="form-control mb-4" readonly="readonly" type="text" value="<%= @reservation.start %>" name="reservation[start_date]" id="reservation_start_date">
                         <label for="end_date">終了日</label>
@@ -19,7 +18,7 @@
                         <input class="form-control mb-4" readonly="readonly" type="text" value="<%= @total_price %>" name="reservation[total_amount]" id="reservation_total_amount">
                         <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>
                         <input type="submit" name="commit" value="予約を確定" class="btn btn-primary form-control my-3" data-disable-with="予約を確定">
-                        <a class="btn btn-secondary form-control" href="/rooms/310">ルーム詳細に戻る</a>
+                        <a class="btn btn-secondary form-control" href="/rooms/<%= @room.id %>">ルーム詳細に戻る</a>
                     </form>
                 </div>
             </div>

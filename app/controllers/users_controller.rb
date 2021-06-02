@@ -31,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
   end
 
   def update
@@ -53,11 +52,9 @@ class UsersController < ApplicationController
   end
 
   def account
-    @user = User.find_by(params[:id])
   end
 
   def profile
-    @user = User.find_by(params[:id])
   end
 
   def login_form

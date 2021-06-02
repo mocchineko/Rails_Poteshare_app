@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   post "users/:id/update" => "users#update"
-  get "users/:id/edit" => "users#edit"
+  get "users/edit" => "users#edit"
   get "users/account" => "users#account"
   get "users/profile" => "users#profile"
   post "users/create" => "users#create"
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get "reservations" => "reservations#index"
   get "reservations/new" => "reservations#new"
-  post "reservations" => "reservations#create"
+  post "reservations/create" => "reservations#create"
   get "reservations/:id" => "reservations#show"
   
   get "rooms/new" => "rooms#new"

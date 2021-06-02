@@ -27,7 +27,7 @@
                         <input class="form-control mb-4" placeholder="年/月/日" type="date" name="end_date" id="end_date">
                         <label for="person_count">人数</label>
                         <input class="form-control mb-4" type="number" name="person_count" id="person_count">
-                        <input type="hidden" name="room_id" id="room_id" value="16">
+                        <input type="hidden" name="room_id" id="room_id" value="<%= @room.id %>">
                         <input type="submit" name="commit" value="予約する" class="btn btn-primary form-control"
                             data-disable-with="予約する">
                     </form>

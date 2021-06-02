@@ -25,7 +25,7 @@ class RoomsController < ApplicationController
       description: params[:description],
       price: params[:price],
       address: params[:address],
-      thumbnail: thumbnailquit
+      thumbnail: thumbnail
       )
       if @room.save
         flash[:notice] = "ルームを登録しました"
@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find_by(id: params[:id])
+    @room = Room.find(params[:id])
   end
 
   def search
