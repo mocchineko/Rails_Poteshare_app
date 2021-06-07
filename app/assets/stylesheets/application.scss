@@ -95,6 +95,12 @@ div.field, div.actions {
     margin-bottom: 10px;
 }
 
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
  .fa, .fas {
     font-weight: 900;
     font-family: "Font Awesome 5 Free";
@@ -370,6 +376,19 @@ textarea.form-control {
     padding: 4px;
     margin: 0 5px;
 }
+
+/*============================================================
+.alert
+============================================================*/
+.alert {
+  color:#262626; 
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000 ;
+  padding:12px; font-weight:850;
+}
+
+
 
 /*============================================================
 .button
@@ -1067,3 +1086,49 @@ user
   .user .icon-box {
     text-align: center;
   }
+
+
+
+/* line 31, app/assets/stylesheets/scaffolds.scss */
+div.field,
+div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 35, app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 38, app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 43, app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+/* line 50, app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+/* line 59, app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

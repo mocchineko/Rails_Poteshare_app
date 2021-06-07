@@ -3,8 +3,18 @@
 <div class="container device">
     <div class="device_frame">
         <h2 class="mb-3">アカウント編集</h2>
+        <% if @current_user.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@current_user.errors.count, "error") %> prohibited this product from being saved:</h2>
+                <ul>
+                    <% @current_user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
         <div class="device_inner">
-            <%= form_tag("/users/edit", class: "edit_user", id: "edit_user", method: :post) do %>
+            <%= form_tag("/users", class: "edit_user", id: "edit_user", method: :post) do %>
                 <div class="field">
                     <div class="form-group">
                         <label for="user_email">メールアドレス</label>

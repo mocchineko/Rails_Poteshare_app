@@ -4,12 +4,19 @@
         <div class="device_inner">
             <%= form_tag("/users/create", method: :post, class: "new_user") do %>
                 <input type="hidden" name="authenticity_token">
-                <div class="field form-row">
-                    <input  class="form-control col-10 px-2" placeholder="メールアドレス" type="email" value="<%= @email %>" name="user[email]" id="user_email">
+                <% if @user.errors.any? %>
+                        <div id="error_explanation">
+                            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
+                            <ul>
+                                <% @user.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text"
-                        name="name" id="user_name">
+                    <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text" name="name" id="user_name">                           
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
@@ -17,17 +24,14 @@
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード"
-                        type="password" name="password" id="user_password" value="<%= @user.password %>">
+                    <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード" type="password" name="password" id="user_password" value="<%= @user.password %>">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード確認"
-                        type="password" name="password_confirmation" id="user_password_confirmation">
+                    <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード確認" type="password" name="password_confirmation" id="user_password_confirmation">
                 </div>
                 <div class="actions">
-                    <input type="submit" name="commit" value="新しいアカウントを作成" class="form-control btn-primary my-4 "
-                        data-disable-with="新しいアカウントを作成">
+                    <input type="submit" name="commit" value="新しいアカウントを作成" class="form-control btn-primary my-4" data-disable-with="新しいアカウントを作成">
                 </div>
             <% end %>
             <%= link_to("すでにアカウントをお持ちの方はログイン", "/login") %><br>

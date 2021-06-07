@@ -46,6 +46,7 @@ class RoomsController < ApplicationController
       @rooms = @rooms.where('address LIKE ?', "%#{params[:area]}%")
     end
 
+
     if params[:keyword].present?
       keyword = params[:keyword]
       @rooms = @rooms.where(['name LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%"])

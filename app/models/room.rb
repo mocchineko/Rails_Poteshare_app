@@ -5,4 +5,8 @@ class Room < ApplicationRecord
     validates :address, {presence: true}
     validates :thumbnail, {presence: true}
 
+    def reservations
+        return Reservation.where(user_id: self.id)
+    end
+
 end

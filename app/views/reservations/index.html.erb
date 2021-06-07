@@ -13,10 +13,33 @@
             </tr>
         </thead>
         <tbody>
-                <div class="rooms-index-item">
-                    <tr>
-                    </tr>
-                </div>
+            <% @current_user.reservations.each do |reservation| %>
+                <tr>
+                    <td>
+                        <%= link_to("/rooms/#{reservation.room_id}") do %>
+                            <img src="<%= reservation.room.thumbnail %>" class="reservations-image" alt="部屋画像" onerror="this.onerror=null;this.src='/assets/room01.jpg';")
+                        <% end %>
+                    </td>
+                    <td class="posts-name">
+                        <%= link_to("#{reservation.room.name}", "/rooms/#{reservation.room.id}") %>
+                    </td>
+                    <td class="content">
+                        <%= reservation.room.description %>
+                    </td>
+                    <td class="price-icon">
+                        <%= reservation.total_amount %>
+                    </td>
+                    <td>
+                        <%= reservation.start %>
+                    </td>
+                    <td>
+                        <%= reservation.end %>
+                    </td>
+                    <td>
+                        <%= reservation.created_at %>
+                    </td>
+                </tr>
+            <% end %>
         </tbody>
     </table>
 </div>

@@ -1,7 +1,9 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user, {only: [:index, :new, :create, :show]}
+  
 
   def index
+    @reservations = @current_user.reservations
   end
 
   def new

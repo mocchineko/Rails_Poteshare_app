@@ -63,7 +63,17 @@
       <% end %>
     </header>
     <div class="clearfix"></div>
-    <div class="notifications">    
+    <div class="notifications">  
+      <% if flash[:alert] %>
+        <div class="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
     </div>
     <div class="main-content">
       <%= yield %>

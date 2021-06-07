@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  post "users/:id/update" => "users#update"
-  get "users/edit" => "users#edit"
-  get "users/account" => "users#account"
-  get "users/profile" => "users#profile"
   post "users/create" => "users#create"
+  post "users" => "users#account_update"
+  get "users/account" => "users#account"
+  get "users/edit" => "users#edit"
+  post "users/update" => "users#profile_update"
+  get "users/profile" => "users#profile"
   get "signup" => "users#new"
   post "login" => "users#login"
   delete "logout" => "users#logout"

@@ -11,13 +11,13 @@
                 <div class="update-content">
                     <div class="row">
                         <label class="col-md-3" for="start_date">開始日</label>
-                        <div class="col-md-9"><%= @reservation.start %> formatかける</div>
+                        <div class="col-md-9"><%= @reservation.start.strftime("%Y年%m月%d日") %></div>
                     </div>
                 </div>
                 <div class="update-content">
                     <div class="row">
                         <label class="col-md-3" for="end_date">終了日</label>
-                        <div class="col-md-9"><%= @reservation.end %> formatかける</div>
+                        <div class="col-md-9"><%= @reservation.end.strftime("%Y年%m月%d日") %></div>
                     </div>
                 </div>
                 <div class="update-content">

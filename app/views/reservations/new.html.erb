@@ -5,7 +5,8 @@
                 <h4 class="reservations-new-check-content">予約内容確認</h4>
                 <h5 class="price-icon"><%= @room.price %> / 日</h5>
                 <div class="reservations-new-date-select">
-                    <form class="new_reservation" id="new_reservation" action="/reservations/create" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="bW+hF41n95i3LKi7z60aW7z059c//YJNYZqf9/iwnQND2yBxpJEzyfUCsiMScWAuhnSi9R3QAD7Ubyqqx1+uBQ==">
+                    <form class="new_reservation" id="new_reservation" action="/reservations/create" accept-charset="UTF-8" method="post">
+                        <input type="hidden" name="authenticity_token">
                         <input type="hidden" value="<%= @room.id %>" name="reservation[room_id]" id="reservation_room_id">
                         <label for="start_date">開始日</label>
                         <input class="form-control mb-4" readonly="readonly" type="text" value="<%= @reservation.start %>" name="reservation[start_date]" id="reservation_start_date">
