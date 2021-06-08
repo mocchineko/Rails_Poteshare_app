@@ -1,0 +1,50 @@
+<div class="notifications">
+</div>
+<div class="container device">
+    <div class="device_frame">
+        <h2 class="mb-3">アカウント編集</h2>
+        <% if @current_user.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@current_user.errors.count, "error") %> prohibited this product from being saved:</h2>
+                <ul>
+                    <% @current_user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div class="device_inner">
+            <%= form_tag("/users", class: "edit_user", id: "edit_user", method: :post) do %>
+                <div class="field">
+                    <div class="form-group">
+                        <label for="user_email">メールアドレス</label>
+                        <input autofocus="autofocus" autocomplete="email" class="form-control" placeholder="メールアドレスを入力してください" type="email" value="<%= @current_user.email %>" name="email" id="user_email">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="form-group">
+                        <label for="user_password">変更後パスワード（変更する場合のみ入力）</label>
+                        <input autocomplete="new-password" class="form-control" type="password" name="password" id="user_password">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="form-group">
+                        <label for="user_password_confirmation">パスワード確認用（変更する場合のみ入力）</label>
+                        <input autocomplete="new-password" class="form-control" type="password" name="password_confirmation" id="user_password_confirmation">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="user_current_password">現在のパスワード</label>
+                    <input autocomplete="current-password" class="form-control" placeholder="現在のパスワードを入力" type="password" name="current_password" id="user_current_password">
+                </div>
+                <div class="actions">
+                    <input type="submit" name="commit" value="更新" class="form-control btn-primary my-4" data-disable-with="更新">
+                </div>
+                <div class="actions">
+                    <a class="btn btn-outline-secondary form-control" href="/users/account">戻る</a>
+                </div>
+            <% end %> 
+    　 </div> 
+    </div>
+</div>

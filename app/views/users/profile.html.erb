@@ -1,0 +1,75 @@
+<div class="container-fiuld user">
+    <div class="row">
+        <div class="col-lg-2 user-nav user-nav-pc d-lg-block d-none">
+            <ul>
+                <li class=""><a href="/users/account">アカウント</a></li>
+                <li class="active"><a href="/users/profile">プロフィール</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-2 user-nav user-nav-mobile d-lg-none">
+            <ul>
+                <li class=""><a href="/users/account">アカウント</a></li>
+                <li class="active"><a href="/users/profile">プロフィール</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-10 user-view">
+            <div class="user-view-box">
+                <div class="update-content">
+                    <div class="row">
+                        <h5>プロフィール</h5>
+                    </div>
+                </div>
+                <%= form_tag("/users/update", class: "edit_user", id: "edit_user", method: :post, multipart: true) do %>
+                    <input type="hidden" name="_method">
+                    <input type="hidden" name="authenticity_token">
+                    <% if @current_user.errors.any? %>
+                        <div id="error_explanation">
+                            <h2><%= pluralize(@current_user.errors.count, "error") %> prohibited this product from being saved:</h2>
+                            <ul>
+                                <% @current_user.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <div class="update-content">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="icon-box">
+                                    <img class="icon-image host-icon" alt="アイコン画像" src="<%= @current_user.icon %>" onerror="this.onerror=null;this.src='/assets/default_icon.jpg';">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="update-content">
+                        <div class="row">
+                            <label class="col-md-3 required-a" for="image">アイコン画像</label>
+                            <input class="mb-4 col-md-9" placeholder="アイコン画像をアップロード" type="file" name="user[image]"
+                                id="user_image">
+                        </div>
+                    </div>
+                    <div class="update-content">
+                        <div class="row">
+                            <label class="col-md-3 required-a control-label" for="name">名前</label>
+                            <input class="form-control mb-4 col-md-9" placeholder="名前を入力" type="text" value="<%= @current_user.name %>"
+                                name="user[name]" id="user_name">
+                        </div>
+                    </div>
+                    <div class="update-content">
+                        <div class="row">
+                            <label class="col-md-3 required-a control-label" for="introduction">自己紹介</label>
+                            <textarea rows="5" class="form-control mb-4 col-md-9" placeholder="自己紹介を入力"
+                                name="user[introduction]" id="user_introduction"><%= @current_user.introduce %></textarea>
+                        </div>
+                    </div>
+                    <div class="update-content">
+                        <div class="row">
+                            <input type="submit" name="commit" value="更新" class="col-md-2 btn btn-primary mx-3"
+                                data-disable-with="更新">
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
