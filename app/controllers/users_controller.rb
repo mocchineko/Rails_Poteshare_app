@@ -37,41 +37,34 @@ class UsersController < ApplicationController
   def account
   end
 
-  user_params = params[:user]
-    @user = User.find_by(email: user_params[:email])
-    if @user && @user.authenticate(user_params[:password])
-      session[:user_id] = @user.id
-      redirect_to("/")
-    else
-      @email = params[:email]
-      @password = params[:password]
-      flash.now[:alert] = "Invalid Email or password."
-      render "login_form"
-    end
-  end
-
   def account_update
     password = params[:password]
     password_confirmation = params[:password_confirmation]
     current_password = params[:current_password]
 
-    # @current_user.authenticate(password) では？
-    # DBの暗号化された値と == で比較しても一致しない
-    # 一致してないからsaveが実行されなくて、エラーも入ってない
-    if @current_user && @current_user.authenticate(password)
+    if @current_user.authenticate(current_password)
+      @current_user.email = params[:email]
 
-      if password == password_confirmation
-        @current_user.password = params[:password]
-        # @current_userじゃない？
-        # 値を代入しないと、更新する項目がないから何も実行されない
-          if @current_user.save
-            flash[:notice] = "Your account has been updated successfully."
-            redirect_to("/")
-          end
+      if password
+        if password == password_confirmation
+          @current_user.password = params[:password]
+        else
+          @current_user.errors.add("password_confirmation", " is incorrect")
+          render("users/edit") and return
+        end
+      end
+
+      if @current_user.save
+        flash[:notice] = "Your account has been updated successfully."
+        redirect_to("/") and return
       else
         render("users/edit")
       end
+    else
+      @current_user.errors.add("current password", " is incorrect")
+      render("users/edit")
     end
+  end
 
   def profile
   end
@@ -109,6 +102,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: user_params[:email])
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
+      flash[:notice] = "Signed in successfully."
       redirect_to("/")
     else
       @email = params[:email]

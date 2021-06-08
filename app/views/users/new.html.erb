@@ -3,7 +3,6 @@
         <p class="my-4">新しいアカウントを作成</p>
         <div class="device_inner">
             <%= form_tag("/users/create", method: :post, class: "new_user") do %>
-                <input type="hidden" name="authenticity_token">
                 <% if @user.errors.any? %>
                         <div id="error_explanation">
                             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -16,15 +15,15 @@
                     <% end %>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text" name="name" id="user_name">                           
+                    <input autocomplete="name" class="form-control col-10 px-2" placeholder="ユーザー名" type="text" name="name" id="user_name" value="<%= @user.name %>">                           
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="email" class="form-control col-10 px-2" placeholder="メールアドレス" type="email" name="email" id="user_email">
+                    <input autocomplete="email" class="form-control col-10 px-2" placeholder="メールアドレス" type="email" name="email" id="user_email" value="<%= @user.email %>">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
-                    <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード" type="password" name="password" id="user_password" value="<%= @user.password %>">
+                    <input autocomplete="new-password" class="form-control col-10 px-2" placeholder="パスワード" type="password" name="password" id="user_password">
                 </div>
                 <div class="field form-row">
                     <div class="col-2 required-b pt-2"></div>
